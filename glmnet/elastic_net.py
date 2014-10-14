@@ -23,7 +23,9 @@ class ElasticNet(GlmNet):
 
     def fit(self, X, y,
             lambdas=None, weights=None, rel_penalties=None,
-            excl_preds=None, box_constraints=None):
+            excl_preds=None, box_constraints=None,
+            intercept=True # include intercept by default
+            ):
         '''Fit an elastic net model.
 
         Arguments: 
@@ -128,7 +130,8 @@ class ElasticNet(GlmNet):
                                      self.frac_lg_lambda, 
                                      self.lambdas, 
                                      self.threshold, 
-                                     nlam=self.n_lambdas
+                                     nlam=self.n_lambdas,
+                                     intr = int(intercept)
                                  )
         else:
             X.sort_indices()
@@ -159,7 +162,8 @@ class ElasticNet(GlmNet):
                                     self.frac_lg_lambda, 
                                     self.lambdas, 
                                     self.threshold, 
-                                    nlam=self.n_lambdas
+                                    nlam=self.n_lambdas,
+                                     intr = int(intercept)
                                 )
         self._check_errors()
         # Keep some model metadata

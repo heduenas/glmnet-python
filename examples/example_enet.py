@@ -1,5 +1,5 @@
 import numpy as np
-from ..glmnet import ElasticNet
+from glmnet import ElasticNet
 from sklearn.datasets import make_regression
 
 display_bar = '-'*70
